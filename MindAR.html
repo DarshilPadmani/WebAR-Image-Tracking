@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="eg">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.5/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+
+<body>
+    <a-scene
+        mindar-image="imageTargetSrc:https://cdn.glitch.global/4ab4383f-20a1-4b44-95f6-f8077367e16e/targets.mind?v=1737139459231;"
+        vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled:false">
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- Image Target Entity -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <!-- 3D Model with Animations -->
+            <a-gltf-model
+                src="https://cdn.glitch.me/4ab4383f-20a1-4b44-95f6-f8077367e16e/apple_vision_pro.glb?v=1737140621683"
+                position="0 0 0" scale="5 5 5" rotation="0 0 0" shadow="cast: true"
+                animation="property: rotation; to: 90 360 0; loop: true; dur: 5000; easing: linear"
+                animation__scale="property: scale; dir: alternate; dur: 2000; easing: easeInOutQuad; loop: true; to: 5.5 5.5 5.5"></a-gltf-model>
+
+            <!-- Key Light for Strong Illumination -->
+            <a-light type="directional" color="#ffffff" intensity="2.0" position="2 4 3" shadow="cast: true"></a-light>
+
+            <!-- Fill Light for Balancing Shadows -->
+            <a-light type="directional" color="#e0e0e0" intensity="1.2" position="-2 4 -3"
+                shadow="cast: true"></a-light>
+
+            <!-- Back Light for Depth and Contrast -->
+            <a-light type="spot" color="#ffffff" intensity="0.7" position="0 6 -5" angle="45"
+                shadow="cast: true"></a-light>
+
+            <!-- Ambient Light for Soft Overall Illumination -->
+            <a-light type="ambient" color="#d3d3d3" intensity="0.8"></a-light>
+
+            <!-- Glow Effect for Enhanced Atmosphere -->
+            <a-entity geometry="primitive: sphere; radius: 0.1"
+                material="color: #f0f0f0; emissive: #f0f0f0; emissiveIntensity: 1" position="0 3 0"
+                animation="property: position; to: 0 4 0; dur: 1500; dir: alternate; loop: true; easing: easeInOutSine"></a-entity>
+
+            <!-- Ground for Shadow Reflection -->
+
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
